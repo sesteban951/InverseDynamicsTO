@@ -21,16 +21,24 @@ def define_spinner_optimization_problem():
     problem.num_steps = 200
     problem.q_init = np.array([0.0, 0.0, 0.0])
     problem.v_init = np.array([0.0, 0.0, 0.0])
-    problem.Qq = 1.0 * np.eye(3)
-    problem.Qv = 0.1 * np.eye(3)
-    problem.R = np.diag([0.1, 0.1, 0.1])
+
+    a = 1
+    b = 1
+    c = 1
+    w = 1*5000
+
+    problem.Qq = np.array([[a,  0,   0],
+                           [0, b+w, -w],
+                           [0, -w,  c+w]])
+    problem.Qv = problem.Qq
+    problem.R = np.diag([0.1, 0.1, 1000])
     problem.Qf_q = 10 * np.eye(3)
     problem.Qf_v = 0.1 * np.eye(3)
 
     q_nom = []   # Can't use list comprehension here because of Eigen conversion
     v_nom = []
     for i in range(problem.num_steps + 1):
-        q_nom.append(np.array([np.pi, -np.pi, np.pi/2]))
+        q_nom.append(np.array([np.pi/2, np.pi, np.pi]))
         v_nom.append(np.array([0.0, 0.0, 0.0]))
     problem.q_nom = q_nom
     problem.v_nom = v_nom
