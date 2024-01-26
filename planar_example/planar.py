@@ -74,10 +74,11 @@ class CIMPC():
             Qf_v[j, i] = w_4bar_v
 
         # ensure all matrices are positive definite
-        assert np.all(np.linalg.eigvals(Qq) > 0), "Qq must be positive definite"
-        assert np.all(np.linalg.eigvals(Qv) > 0), "Qv must be positive definite"
-        assert np.all(np.linalg.eigvals(Qf_q) > 0), "Qf_q must be positive definite"
-        assert np.all(np.linalg.eigvals(Qf_v) > 0), "Qf_v must be positive definite"
+        assert np.all(np.linalg.eigvals(Qq) >= 0) and (Qq.shape[0]==Qq.shape[1]), "Qq must be positive semi definite and square"
+        assert np.all(np.linalg.eigvals(Qv) >= 0) and (Qv.shape[0]==Qv.shape[1]), "Qv must be positive semi definite and square"
+        assert np.all(np.linalg.eigvals(R) >= 0) and (R.shape[0]==R.shape[1]), "R must be positive semi definite and square"
+        assert np.all(np.linalg.eigvals(Qf_q) >= 0) and (Qf_q.shape[0]==Qf_q.shape[1]), "Qf_q must be semi positive definite and square"
+        assert np.all(np.linalg.eigvals(Qf_v) >= 0) and (Qf_v.shape[0]==Qf_v.shape[1]), "Qf_v must be semi positive definite and square"
 
         self.problem.Qq = Qq
         self.problem.Qv = Qv
@@ -89,7 +90,7 @@ class CIMPC():
         self.params = SolverParameters()
  
         # Trust region solver parameters
-        self.params.max_iterations = 300
+        self.params.max_iterations = 200
         self.params.scaling = True
         self.params.equality_constraints = True
         self.params.Delta0 = 1e3

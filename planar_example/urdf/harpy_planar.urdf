@@ -36,7 +36,7 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="../meshes/Torso.obj"/>
+                <mesh filename="../meshes/Torso_.obj"/>
             </geometry>
             <material name="black"/>
         </visual>
@@ -85,7 +85,7 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="../meshes/HipRight.obj"/>
+                <mesh filename="../meshes/HipRight_.obj"/>
             </geometry>
             <material name="black"/>
         </visual>
@@ -98,7 +98,7 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="../meshes/HipLeft.obj"/>
+                <mesh filename="../meshes/HipLeft_.obj"/>
             </geometry>
             <material name="black"/>
         </visual>
@@ -172,14 +172,14 @@
                 <mesh filename="../meshes/Foot.obj"/>
             </geometry> -->
             <geometry>
-                <sphere radius="0.01"/>
+                <sphere radius="0.02"/>
             </geometry>
             <material name="caltech_orange"/> 
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <sphere radius="0.01"/>
+                <sphere radius="0.02"/>
             </geometry>
         </collision>
     </link>
@@ -194,14 +194,14 @@
                 <mesh filename="../meshes/Foot.obj"/>
             </geometry> -->
             <geometry>
-                <sphere radius="0.01"/>
+                <sphere radius="0.02"/>
             </geometry>
             <material name="caltech_orange"/>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <sphere radius="0.01"/>
+                <sphere radius="0.02"/>
             </geometry>
         </collision>
     </link>
