@@ -31,7 +31,7 @@ def define_spinner_optimization_problem():
                            [0, b+w, -w],
                            [0, -w,  c+w]])
     problem.Qv = problem.Qq
-    problem.R = np.diag([0.1, 0.1, 1000])
+    problem.R = np.diag([0.1, 0.1, 0.1])
     problem.Qf_q = 10 * np.eye(3)
     problem.Qf_v = 0.1 * np.eye(3)
 

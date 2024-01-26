@@ -23,9 +23,9 @@ def define_spinner_optimization_problem():
     problem.v_init = np.array([0.0, 0.0, 0.0])
     problem.Qq = 1.0 * np.eye(3)
     problem.Qv = 0.1 * np.eye(3)
-    problem.R = np.diag([0.1, 0.1, 1e3])
-    problem.Qf_q = 10 * np.eye(3)
-    problem.Qf_v = 0.1 * np.eye(3)
+    problem.R = np.diag([0.1, 0.1, 0.1, 0.1])
+    problem.Qf_q = 1 * np.eye(11)
+    problem.Qf_v = 1 * np.eye(11)
 
     q_nom = []   # Can't use list comprehension here because of Eigen conversion
     v_nom = []

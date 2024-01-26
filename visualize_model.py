@@ -11,8 +11,10 @@ from pydrake.all import ModelVisualizer, MultibodyPlant, Parser, StartMeshcat, A
 from pydrake.all import *
 
 # input parameters
-model_file = "./spinner_example/urdf/spinner_4bar.urdf"
-robot = "spinner"
+# model_file = "./spinner_example/urdf/spinner_4bar.urdf"
+model_file = "./planar_example/urdf/harpy_planar.urdf"
+# robot = "spinner"
+robot = "harpy"
 
 # load model
 plant = MultibodyPlant(0)
