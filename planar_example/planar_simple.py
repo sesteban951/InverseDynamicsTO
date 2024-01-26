@@ -31,8 +31,8 @@ def define_spinner_optimization_problem():
     r = 0
     l = 0
     #                 0  1  2  3  4      5  6  7  8      9 10
-    Qq  =  np.array([[100, 0, 0, 0, 0,     0, 0, 0, 0,     0, 0], # q0
-                     [0, 100, 0, 0, 0,     0, 0, 0, 0,     0, 0],  # q1
+    Qq  =  np.array([[1000, 0, 0, 0, 0,     0, 0, 0, 0,     0, 0], # q0
+                     [0, 1000, 0, 0, 0,     0, 0, 0, 0,     0, 0],  # q1
                      [0, 0, 10, 0, 0,     0, 0, 0, 0,     0, 0],  # q2
                      [0, 0, 0, 10, 0,     0, 0, 0, 0,     0, 0],  # q3
                      [0, 0, 0, 0, 10+r,   r, 0, 0, 0,     0, 0],  # q4
@@ -74,7 +74,7 @@ def define_spinner_solver_parameters():
     """
     params = SolverParameters()
 
-    params.max_iterations = 200
+    params.max_iterations = 300
     params.scaling = True
     params.equality_constraints = True
     params.Delta0 = 1e1

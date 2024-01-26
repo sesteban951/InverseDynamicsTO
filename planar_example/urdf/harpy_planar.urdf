@@ -7,10 +7,24 @@
     <material name="black">
         <color rgba="0.2 0.2 0.2 1"/>
     </material>
+    <material name="caltech_orange">
+        <color rgba="0.92 0.39 0.043 1"/>
+    </material>
     
     <!-- *************************** LINKS *************************** -->
-    <!--Base link-->
-    <link name="TorsoBaseLink"/>
+    <!-- Ground -->
+    <link name="ground">
+        <inertial>  <!-- dummy inertia: ground is welded to the world frame -->
+            <mass value="1"/>
+            <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 -50"/>
+            <geometry>
+                <box size="100 100 100"/>
+            </geometry>
+        </collision>
+    </link>
 
     <!-- Torso -->
     <link name="Torso">
@@ -26,11 +40,12 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.15"/>
             <geometry>
-                <mesh filename="../meshes/Torso.obj"/>
+                <sphere radius="0.17"/>
             </geometry>
-        </collision> -->
+        </collision>
     </link>
 
     <!-- FrontalHip -->
@@ -46,11 +61,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/HipCouplingRight.obj"/>
-            </geometry>
-        </collision> -->
     </link>
     <link name="FrontalHipLeft">
         <inertial>
@@ -64,11 +74,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/HipCouplingLeft.obj"/>
-            </geometry>
-        </collision> -->
     </link>
 
     <!-- Hip -->
@@ -84,11 +89,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/HipRight.obj"/>
-            </geometry>
-        </collision> -->
     </link>
     <link name="SagittalHipLeft">
         <inertial>
@@ -102,11 +102,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/HipLeft.obj"/>
-            </geometry>
-        </collision> -->
     </link>
 
     <!-- Knee -->
@@ -122,11 +117,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/KneeRight.obj"/>
-            </geometry>
-        </collision> -->
     </link>
     <link name="KneeLeft">
         <inertial>
@@ -140,11 +130,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/KneeLeft.obj"/>
-            </geometry>
-        </collision> -->
     </link>
 
     <!-- Ankle -->
@@ -160,11 +145,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/AnkleRight.obj"/>
-            </geometry>
-        </collision> -->
     </link>
     <link name="AnkleLeft">
         <inertial>
@@ -178,11 +158,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/AnkleLeft.obj"/>
-            </geometry>
-        </collision> -->
     </link>
 
     <!-- Foot -->
@@ -193,20 +168,19 @@
             <inertia ixx="0.00000158" ixy="0.0" ixz="0.0" iyy="0.00001558" iyz="0.0" izz="0.00001677"/>   
         </inertial>
         <visual>
-            <geometry>
+            <!-- <geometry>
                 <mesh filename="../meshes/Foot.obj"/>
+            </geometry> -->
+            <geometry>
+                <sphere radius="0.01"/>
             </geometry>
-            <material name="black"/>
+            <material name="caltech_orange"/> 
         </visual>
         <collision>
+            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="../meshes/Foot.obj"/>
+                <sphere radius="0.01"/>
             </geometry>
-            <drake:proximity_properties>
-                <drake:rigid_hydroelastic/>
-                <drake:mu_dynamic value="0.5"/>
-                <drake:hunt_crossley_dissipation value="1.25"/>
-            </drake:proximity_properties>
         </collision>
     </link>
     <link name="FootLeft">
@@ -216,20 +190,19 @@
             <inertia ixx="0.00000158" ixy="0.0" ixz="0.0" iyy="0.00001558" iyz="0.0" izz="0.00001677"/>   
         </inertial>
         <visual>
-            <geometry>
+            <!-- <geometry>
                 <mesh filename="../meshes/Foot.obj"/>
+            </geometry> -->
+            <geometry>
+                <sphere radius="0.01"/>
             </geometry>
-            <material name="black"/>
+            <material name="caltech_orange"/>
         </visual>
         <collision>
+            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="../meshes/Foot.obj"/>
+                <sphere radius="0.01"/>
             </geometry>
-            <drake:proximity_properties>
-                <drake:rigid_hydroelastic/>
-                <drake:mu_dynamic value="0.5"/>
-                <drake:hunt_crossley_dissipation value="1.25"/>
-            </drake:proximity_properties>
         </collision>
     </link>
 
@@ -246,11 +219,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/ThrusterRight.obj"/>
-            </geometry>
-        </collision> -->
     </link>    
     <link name="ThrusterLeft">
         <inertial>
@@ -264,11 +232,6 @@
             </geometry>
             <material name="black"/>
         </visual>
-        <!-- <collision>
-            <geometry>
-                <mesh filename="../meshes/ThrusterLeft.obj"/>
-            </geometry>
-        </collision> -->
     </link>  
 
     <!--Shockabsorber link-->
@@ -280,16 +243,16 @@
     <link name="FSALeft"/>  <!-- Left lower ball frame -->
 
     <!-- *************************** JOINTS *************************** -->
-    <!-- Base frame to wolrd -->    
+    <!-- Ground to world-->
     <joint name="world_joint" type="fixed">
         <parent link="world"/>
-        <child link="TorsoBaseLink"/>
+        <child link="ground"/>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
     <!-- Base frame to torso -->
-    <joint name="TorsoBaseJoint" type="planar">
-        <parent link="TorsoBaseLink"/>
+    <joint name="FloatingBase" type="planar">
+        <parent link="ground"/>
         <child link="Torso"/>
         <axis xyz="0 -1 0"/>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.5708 -3.1416"/>
